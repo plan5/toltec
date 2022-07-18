@@ -9,9 +9,9 @@ pkgdesc="Multi-account and device encryption manager"
 ## URL to where the project can be found on the Internet
 url="https://github.com/plan5/remarvin"
 ## Version of the package (see below)
-pkgver=0.1.0-1
+pkgver=0.1.1-1
 ## ISO-8601 timestamp at which the source of this version was released
-timestamp=2022-07-18T18:00Z
+timestamp=2022-07-18T22:00Z
 ## Section that best matches this package
 # See <https://github.com/toltec-dev/toltec/blob/stable/docs/package.md#section>
 # for available sections
@@ -32,13 +32,11 @@ image=base:v2.1
 # Archives will be automatically extracted, stripping any useless containing
 # directories, and made available during the build step below
 source=(
-    https://github.com/plan5/remarvin/archive/refs/tags/0.1.0.zip
-    remarvin.draft
+    https://github.com/plan5/remarvin/archive/refs/tags/v0.1.1.zip
 )
 ## SHA-256 checksums of the source archives above
 sha256sums=(
-    e25a4257bb4fbf8e493a6cacd08bcaf7e78746f4128250150f498145e77db2ed
-    SKIP
+    9c19de9ae59d7d0d1ddcfcdf3af15e6fb3dfaf2d2039d20c27dbcc01b17bc088
 )
 
 installdepends=(gocryptfs simple)
