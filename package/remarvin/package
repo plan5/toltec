@@ -33,10 +33,12 @@ image=base:v2.1
 # directories, and made available during the build step below
 source=(
     https://github.com/plan5/remarvin/archive/refs/tags/0.1.0.zip
+    remarvin.draft
 )
 ## SHA-256 checksums of the source archives above
 sha256sums=(
     e25a4257bb4fbf8e493a6cacd08bcaf7e78746f4128250150f498145e77db2ed
+    SKIP
 )
 
 installdepends=(gocryptfs simple)
@@ -67,4 +69,6 @@ package() {
     # Add a executable (binary/script)
     # install -D -m 755 "$srcdir"/build/programname "$pkgdir"/opt/bin/programname
     install -D -m 755 "$srcdir"/remarvin.sh "$pkgdir"/opt/bin/remarvin.sh
+    install -D -m 644 "$srcdir"/icon.png -t "$pkgdir"/opt/etc/draft/icons/remarvin.png
+    install -D -m 644 "$srcdir"/remarvin.draft "$pkgdir"/opt/etc/draft/ 
 }
