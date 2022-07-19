@@ -3,70 +3,24 @@
 # SPDX-License-Identifier: MIT
 
 pkgnames=(remarvin)
-## This should be a short description targeted at users of your package
-# Start directly with a noun or a verb, do not include “for the reMarkable”
 pkgdesc="Multi-account and device encryption manager"
-## URL to where the project can be found on the Internet
 url="https://github.com/plan5/remarvin"
-## Version of the package (see below)
 pkgver=0.1.1-1
-## ISO-8601 timestamp at which the source of this version was released
 timestamp=2022-07-18T22:00Z
-## Section that best matches this package
-# See <https://github.com/toltec-dev/toltec/blob/stable/docs/package.md#section>
-# for available sections
 section=rmall
-## This should be your contact information
 maintainer="plan5 <plan5 30434574+plan5@users.noreply.github.com>"
-## A license under which the upstream source is available
-# Choose among the list of valid SPDX license identifiers
-# <https://spdx.org/licenses/>
 license=GPLv3
-
-## Which Docker image to use for building the package
-# See <https://github.com/toltec-dev/toolchain> for available images
-# The images are debian based and allow you to install additional packages with apt.
-# Examples (version may be out of date): base:v1.1, qt:v1.1, python:v1.1, rust:v1.1
-image=base:v2.1
-## Whitespace-separated list of source archives that are needed to build the package
-# Archives will be automatically extracted, stripping any useless containing
-# directories, and made available during the build step below
+_srcver="v${pkgver%-*}"
 source=(
-    https://github.com/plan5/remarvin/archive/refs/tags/v0.1.1.zip
+    https://github.com/plan5/remarvin/archive/refs/tags/$_srcver.zip
 )
-## SHA-256 checksums of the source archives above
 sha256sums=(
     9c19de9ae59d7d0d1ddcfcdf3af15e6fb3dfaf2d2039d20c27dbcc01b17bc088
 )
-
 installdepends=(gocryptfs simple)
 
-build() {
-    ## Commands to compile your source
-    # The working directory contains all sources specified in `source=`
-    # above, with archives already extracted
-    return
-}
-
 package() {
-    ## Commands to copy the build artifacts into a package structure
-    # Use the `install` command when possible
-    # (see `man install` or <https://linux.die.net/man/1/install>)
-
-    # The following variables are available:
-    # "$srcdir" - The directory where build() was run
-    # "$pkgdir" - The final folder containing the root where your files should go
-
-    # Examples:
-    # Add a single config file or non-executable resource
-    # install -D -m 644 "$srcdir"/default_config "$pkgdir"/opt/etc/your_package.conf
-    #
-    # Add a empty directory
-    # install -d "$pkgdir"/opt/etc/draft/icons
-    #
-    # Add a executable (binary/script)
-    # install -D -m 755 "$srcdir"/build/programname "$pkgdir"/opt/bin/programname
     install -D -m 755 "$srcdir"/remarvin.sh "$pkgdir"/opt/bin/remarvin.sh
-    install -D -m 644 "$srcdir"/icon.png -t "$pkgdir"/opt/etc/draft/icons/remarvin.png
+    install -D -m 644 "$srcdir"/icon256.png -t "$pkgdir"/opt/etc/draft/icons/remarvin.png
     install -D -m 644 "$srcdir"/remarvin.draft "$pkgdir"/opt/etc/draft/ 
 }
