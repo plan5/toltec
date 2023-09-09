@@ -22,5 +22,5 @@ installdepends=(gocryptfs simple)
 package() {
     install -D -m 755 "$srcdir"/remarvin.sh "$pkgdir"/opt/bin/remarvin.sh
     install -D -m 644 "$srcdir"/icon256.png -t "$pkgdir"/opt/etc/draft/icons/
-    install -D -m 644 "$srcdir"/remarvin.draft "$pkgdir"/opt/etc/draft/ 
+    install -D -m 644 "$srcdir"/remarvin.draft "$pkgdir"/opt/etc/draft/
 }
