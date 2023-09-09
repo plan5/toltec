@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# Copyright (c) 2020 The Toltec Contributors
+# SPDX-License-Identifier: MIT
+
+pkgnames=(remarvin)
+pkgdesc="Multi-account and device encryption manager"
+url="https://github.com/plan5/remarvin"
+pkgver=0.1.3-1
+timestamp=2023-09-09T22:00Z
+section=rmall
+maintainer="plan5 <plan5 30434574+plan5@users.noreply.github.com>"
+license=MIT
+_srcver="v${pkgver%-*}"
+source=(
+    https://github.com/plan5/remarvin/archive/refs/tags/$_srcver.zip
+)
+sha256sums=(
+    c0500a01ca1f51eae3de7f8db3a2db21bff5744b58cfb5d7dc9c8487c7603353
+)
+installdepends=(gocryptfs simple)
+
+package() {
+    install -D -m 755 "$srcdir"/remarvin.sh "$pkgdir"/opt/bin/remarvin.sh
+    install -D -m 644 "$srcdir"/icon256.png -t "$pkgdir"/opt/etc/draft/icons/
+    install -D -m 644 "$srcdir"/remarvin.draft "$pkgdir"/opt/etc/draft/ 
+}
